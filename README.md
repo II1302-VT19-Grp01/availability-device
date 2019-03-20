@@ -1,2 +1,2 @@
-# refactored-doodle
+# availability-device
 Our first repository!
