@@ -1,0 +1,38 @@
+
+body {
+    background-color: white;
+    font-size: 13pt;
+    max-width: 1400px;
+    margin: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+header {
+    background: rgba(240, 255, 255, 0.71);
+    padding: 20px;
+}
+
+h1 {
+    font-size: 80pt;
+    font-family: 'Alex Brush', cursive;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    clear: both;
+  }
+
+h2 {
+    font-size: 70pt;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    font-family: 'Ubuntu Condensed', cursive;
+}
+
+h3 {
+    font-size: 16pt;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
