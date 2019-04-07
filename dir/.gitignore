@@ -1,6 +1,9 @@
 logs
 target
 /.idea
+/.gradle
+/.ensime_cache
+/.ensime
 /.idea_modules
 /.classpath
 /.project
