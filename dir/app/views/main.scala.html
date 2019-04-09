@@ -1,5 +1,5 @@
 @*
-* This template is called from the `index` template. This template
+* This template is called from the `homescala` template. This template
 * handles the rendering of the page header and body tags. It takes
 * two arguments, a `String` for the title of the page and an `Html`
 * object to insert into the body of the page.
@@ -11,8 +11,8 @@
     <head>
         @* Here's where we render the page title `String`. *@
         <title>Availability Device - @title</title>
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("design.css")">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
 
     </head>

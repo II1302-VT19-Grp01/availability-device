@@ -1,0 +1,45 @@
+body {
+  padding-top: 0px;
+  padding-bottom: 40px;
+  background-color: rgba(215, 227, 227, 0);
+}
+
+header {
+  top: 0;
+  width: 100%;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #c0ceff;
+  }
+
+  li {
+    float: left;
+
+    a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+
+      /* Change the link color to #111 (black) on hover */
+      &:hover {
+        background-color: #A2ABD9;
+        color: #f0ffff;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.footer-tiny {
+  font-size: 2pt;
+  color: rgba(0, 0, 0, 0.1);
+}
+
+
+

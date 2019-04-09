@@ -12,7 +12,7 @@ import play.api.data.validation.Constraints._
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
+  * application's index page.
  */
 @Singleton
 class HomeController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -26,7 +26,6 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    */
   def index() = Action { implicit request: Request[AnyContent] =>
     views.CustomEventPublish.main(Array())
-
     Ok(views.html.index())
   }
 
