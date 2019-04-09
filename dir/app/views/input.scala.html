@@ -1,15 +1,13 @@
 @()
 
+
 @main("Send message.") {
   <br>
   <h1>Here you can send your input to the availability device!</h1>
-  </br>
 
-  <div class="alert alert-primary" role="alert">
-   <a href="@routes.HomeController.index()" class="alert-link">Go back to Home</a>
-</div>
+    <fieldset>
+        <h1 class="h3 mb-3 font-weight-normal">Write the text</h1>
+        <button id="login" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+    </fieldset>
 
-  <p>
-    &copy; 2019 You can find the code <a href="https://github.com/II1302-VT19-Grp01">here</a>.
-</p>
 }

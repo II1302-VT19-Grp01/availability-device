@@ -3,6 +3,11 @@ package controllers
 import javax.inject._
 import play.api._
 import play.api.mvc._
+import play.api.data.Forms._
+import play.api.data.validation.Constraints._
+
+
+
 
 
 /**
@@ -28,4 +33,10 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def input() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.input())
 }
+
+  def status() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.status())
+  }
+
+
 }
