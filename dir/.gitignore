@@ -8,4 +8,5 @@ target
 /.classpath
 /.project
 /.settings
+/dir.iml
 /RUNNING_PID
