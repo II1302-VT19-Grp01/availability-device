@@ -1,13 +1,18 @@
-@()
+@()(implicit request: RequestHeader) <!-- When you are going to make a POST request. -->
 
 
 @main("Send message.") {
   <br>
   <h1>Here you can send your input to the availability device!</h1>
 
-    <fieldset>
-        <h1 class="h3 mb-3 font-weight-normal">Write the text</h1>
-        <button id="login" class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
-    </fieldset>
+    @helper.form(action = routes.HomeController.updateStatus()) {
+        <div class="form-group">
+                <!-- <label for="exampleInput">Input</label> -->
+            <input type="input" class="form-control" id="exampleInput" name="statusInput" aria-describedby="inputHelp" placeholder="Enter input">
+            <small id="inputHelp" class="form-text text-muted">Please do not use a danish "ö".</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        @helper.CSRF.formField <!-- To disable protection. :/ -->
+    }
 
 }
