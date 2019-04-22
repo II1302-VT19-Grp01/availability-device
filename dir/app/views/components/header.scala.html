@@ -1,15 +1,28 @@
-@()
+@(currentPage: Page)(implicit req: RequestHeader)
 
 <header>
     <ul class="nav-links">
-        <li>
-            <a id="nav-index" href="@routes.HomeController.index()">Home</a>
-        </li>
+            <!--  nagivation links requires inverse route logic compared to normal href links -->
+        @if(req.loggedIn) {
+            <li>
+                <a id="nav-logout" href="@routes.LoginController.logout()">Logout</a>
+            </li>
+        } else {
+            <li>
+                <a class="@if(currentPage == Page.Register) { active }" id="nav-register" href="@routes.LoginController.register()">Register</a>
+            </li>
+            <li>
+                <a class="@if(currentPage == Page.Login) { active }" id="nav-login" href="@routes.LoginController.login()">Log in</a>
+            </li>
+        }
         <li>
             <a id="nav-input" href="@routes.HomeController.input()">Input</a>
         </li>
         <li>
             <a id="nav-status" href="@routes.HomeController.status()">Status</a>
+        </li>
+        <li style="float:right">
+            <a class="@if(currentPage == Page.Home) { active }" href="@routes.HomeController.index()">Home</a>
         </li>
     </ul>
 </header>

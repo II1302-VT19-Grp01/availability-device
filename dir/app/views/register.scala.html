@@ -1,0 +1,25 @@
+
+@(form: Form[LoginController.RegisterForm], target: Option[String])(implicit messages: MessagesProvider, req: RequestHeader)
+
+@main("Register", Page.Register) {
+
+    @helper.form(routes.LoginController.doRegister(target), 'class -> "form-signin") {
+        @helper.CSRF.formField
+        <fieldset>
+            <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
+            @if(form.hasGlobalErrors) {
+                @for(error <- form.globalErrors) {
+                    <div class="error">@error.message</div>
+                }
+            }
+            @helper.inputText(form("username"), 'class -> "form-control", 'placeholder -> "Username", '_label -> "Username")
+            @helper.inputPassword(form("password"), 'class -> "form-control", 'placeholder -> "Password", '_label -> "Password")
+            @helper.inputPassword(form("confirmPassword"), 'class -> "form-control", 'placeholder -> "Password", '_label -> "Confirm Password")
+            @helper.inputText(form("firstname"), 'class -> "form-control", 'placeholder -> "First Name", '_label -> "First Name")
+            @helper.inputText(form("surname"), 'class -> "form-control", 'placeholder -> "Last Name", '_label -> "Last Name")
+            @helper.inputText(form("email"), 'class -> "form-control", 'placeholder -> "Email", '_label -> "Email")
+            <button id="register" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </fieldset>
+
+    }
+}

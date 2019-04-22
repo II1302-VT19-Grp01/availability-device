@@ -8,6 +8,13 @@ GET         /                    controllers.HomeController.index
 GET         /input               controllers.HomeController.input
 GET         /status              controllers.HomeController.status
 
+GET         /login               controllers.LoginController.login(target: Option[String] ?= None)
+POST        /login               controllers.LoginController.doLogin(target: Option[String])
+GET         /register            controllers.LoginController.register(target: Option[String] ?= None)
+POST        /register            controllers.LoginController.doRegister(target: Option[String])
+GET         /logout              controllers.LoginController.logout
+
+
 POST        /                    controllers.HomeController.updateStatus
 
 # Map static resources from the /public folder to the /assets URL path

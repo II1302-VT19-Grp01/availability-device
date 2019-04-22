@@ -1,8 +1,8 @@
-@()
+@()(implicit req: RequestHeader)
 
 @import models.InputManager
 
-@main("Status") {
+@main("Status", Page.Other) {
 
     <h1>@InputManager.inputMessage</h1>
 

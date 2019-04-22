@@ -4,7 +4,7 @@
 * two arguments, a `String` for the title of the page and an `Html`
 * object to insert into the body of the page.
 *@
-@(title: String)(content: Html)
+@(title: String, currentPage: Page)(content: Html)(implicit req: RequestHeader)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@
     <body>
         @* And here's where we render the `Html` object containing
         * the page content. *@
-        <div>@components.header()</div>
+        <div>@components.header(currentPage)</div>
         <div class="container">
             @content
             @components.footer()

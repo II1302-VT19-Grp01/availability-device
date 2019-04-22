@@ -16,8 +16,12 @@ libraryDependencies ++= Seq(
   "org.postgresql" % "postgresql" % "42.2.0",
   "com.ibm.messaging" % "watson-iot" %  "0.2.6",
   "org.eclipse.paho" % "org.eclipse.paho.client.mqttv3" % "1.2.1",
-  "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test
-
+  "org.bouncycastle" % "bcprov-jdk15on" % "1.61",
+  "commons-codec" % "commons-codec" % "1.11",
+  "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.1" % Test,
+  "org.mockito" % "mockito-core" % "2.13.0" % Test,
+  // Used for ScalaTest's HTML reports
+  "org.pegdown" % "pegdown" % "1.6.0",
 )
 
 // Adds additional packages into Twirl
@@ -32,6 +36,8 @@ play.sbt.routes.RoutesKeys.routesImport ++= Seq(
   "database._",
   "utils.Binders._"
 )
+
+excludeDependencies += ExclusionRule("org.bouncycastle", "bcprov-jdk16")
 
 
 ensimeScalaVersion in ThisBuild := "2.12.8"
