@@ -7,6 +7,9 @@
             <li>
                 <a id="nav-logout" href="@routes.LoginController.logout()">Logout</a>
             </li>
+            <li>
+                <a id="nav-input" href="@routes.HomeController.input()">Input</a>
+            </li>
         } else {
             <li>
                 <a class="@if(currentPage == Page.Register) { active }" id="nav-register" href="@routes.LoginController.register()">Register</a>
@@ -15,9 +18,6 @@
                 <a class="@if(currentPage == Page.Login) { active }" id="nav-login" href="@routes.LoginController.login()">Log in</a>
             </li>
         }
-        <li>
-            <a id="nav-input" href="@routes.HomeController.input()">Input</a>
-        </li>
         <li>
             <a id="nav-status" href="@routes.HomeController.status()">Status</a>
         </li>
