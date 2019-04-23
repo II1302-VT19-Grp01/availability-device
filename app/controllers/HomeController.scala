@@ -26,7 +26,7 @@ class HomeController @Inject()(implicit val userManager: UserManager, cc: Contro
     * a path of `/`.
     */
   def index() = userAction().apply { implicit request: Request[AnyContent] =>
-    views.CustomEventPublish.main(Array())
+//    views.CustomEventPublish.main(Array())
     Ok(views.html.index())
   }
 
