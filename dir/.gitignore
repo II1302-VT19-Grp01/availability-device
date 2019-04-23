@@ -12,3 +12,4 @@ target
 /dir.iml
 /RUNNING_PID
 application.local.conf
+device.properties

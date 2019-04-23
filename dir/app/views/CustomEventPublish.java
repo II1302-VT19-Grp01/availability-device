@@ -72,6 +72,8 @@ public class CustomEventPublish {
 				System.exit(-1);
 			}
 	//	}
+
+		myClient.disconnect();
 	}
 
 }
