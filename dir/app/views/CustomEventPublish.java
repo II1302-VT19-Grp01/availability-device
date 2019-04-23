@@ -48,7 +48,7 @@ public class CustomEventPublish {
 			myClient.connect();
 		} catch (Exception e) {
 			e.printStackTrace();
-			//System.exit(-1);
+			System.exit(-1);
 		}
 
 		SystemObject obj = new SystemObject();
@@ -69,7 +69,7 @@ public class CustomEventPublish {
 
 			if(!status) {
 				System.out.println("Failed to publish the event......");
-			//	System.exit(-1);
+				System.exit(-1);
 			}
 	//	}
 	}
