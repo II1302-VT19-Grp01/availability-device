@@ -1,4 +1,4 @@
-name := """dir"""
+name := "availability-device"
 organization := "come.II1302"
 
 version := "1.0-SNAPSHOT"
