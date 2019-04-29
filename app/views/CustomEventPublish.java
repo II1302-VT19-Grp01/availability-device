@@ -17,7 +17,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 import com.google.gson.JsonObject;
+import com.ibm.iotf.client.app.ApplicationClient;
 import com.ibm.iotf.client.device.DeviceClient;
+import com.typesafe.config.Config;
+
+import javax.inject.Inject;
+
 /**
  *
  * This sample shows how a device can publish events using MQTT to IBM Watson IoT Platform,
@@ -26,29 +31,38 @@ import com.ibm.iotf.client.device.DeviceClient;
  */
 public class CustomEventPublish {
 
-	private final static String PROPERTIES_FILE_NAME = "/device.properties";
+//	private final static String PROPERTIES_FILE_NAME = "/application.conf";
 
-	public static void main(String[] args) throws Exception {
+	private final Config config;
 
+	@Inject
+	public CustomEventPublish(Config config) {
+		this.config = config;
+	}
+
+	public void main(String message) throws Exception {
 		/**
 		  * Load device properties
 		  */
-		Properties props = new Properties();
+		/*Properties props = new Properties();
 		try {
 			props.load(CustomEventPublish.class.getResourceAsStream(PROPERTIES_FILE_NAME));
 		} catch (IOException e1) {
 			System.err.println("Not able to read the properties file, exiting..");
 			//System.exit(-1);
-		}
+		}*/
+		Properties props = new Properties();
+		config.getConfig("device").entrySet().forEach(e -> props.setProperty(e.getKey(), config.getConfig("device").getString(e.getKey())));
 
-		DeviceClient myClient = null;
+		ApplicationClient myClient = null;
 		try {
 			//Instantiate and connect to IBM Watson IoT Platform
-			myClient = new DeviceClient(props);
+			myClient = new ApplicationClient(props);
 			myClient.connect();
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.exit(-1);
+			throw new RuntimeException(e);
+//			e.printStackTrace();
+//			System.exit(-1);
 		}
 
 		SystemObject obj = new SystemObject();
@@ -59,8 +73,8 @@ public class CustomEventPublish {
 		boolean status = true;
 	//	while(true) {
 			try {
-				byte[] cpuLoad = new byte[] {30, 35, 30, 25};
-				status = myClient.publishEvent("blink", cpuLoad , "binary", 1);
+//				byte[] cpuLoad = new byte[] {30, 35, 30, 25};
+				status = myClient.publishCommand("IBM-KTH", "0", "update-message", message);
 				System.out.println(status);
 				Thread.sleep(1000);
 			} catch (Exception e) {
