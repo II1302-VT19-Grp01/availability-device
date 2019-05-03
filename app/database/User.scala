@@ -14,7 +14,7 @@ case class User(id: Id[User],
                 email: Option[String],
                 role: UserRole = Role.Applicant)
   extends HasId {
-  type Self   = User
+  type Self = User
   type IdType = Long
 }
 
@@ -23,13 +23,19 @@ case class User(id: Id[User],
   * Selecting the columns from the table
   */
 class Users(tag: Tag) extends Table[User](tag, "users") {
-  def id        = column[Id[User]]("id", O.PrimaryKey, O.AutoInc)
-  def username  = column[Option[String]]("username")
-  def password  = column[Option[String]]("password")
+  def id = column[Id[User]]("id", O.PrimaryKey, O.AutoInc)
+
+  def username = column[Option[String]]("username")
+
+  def password = column[Option[String]]("password")
+
   def firstname = column[Option[String]]("firstname")
-  def surname   = column[Option[String]]("surname")
-  def email     = column[Option[String]]("email")
-  def role      = column[UserRole]("role")
+
+  def surname = column[Option[String]]("surname")
+
+  def email = column[Option[String]]("email")
+
+  def role = column[UserRole]("role")
 
   /**
     * These columns make up the User object
