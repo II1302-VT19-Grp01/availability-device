@@ -16,7 +16,7 @@ import scala.concurrent.ExecutionContext
   * application's index page.
   */
 @Singleton
-class HomeController @Inject()(implicit val userManager: UserManager, cc: ControllerComponents, ec: ExecutionContext, customEventPublish: CustomEventPublish) extends AbstractController(cc) with Security {
+class HomeController @Inject()(implicit val userManager: UserManager, val InputManager: InputManager, cc: ControllerComponents, ec: ExecutionContext, customEventPublish: CustomEventPublish) extends AbstractController(cc) with Security {
 
   /**
     * Create an Action to render an HTML page.
@@ -35,13 +35,14 @@ class HomeController @Inject()(implicit val userManager: UserManager, cc: Contro
     Ok(views.html.input())
   }
 
-  def status() = userAction().apply { implicit request: Request[AnyContent] =>
-    Ok(views.html.status())
+  def status() = userAction().async { implicit request: Request[AnyContent] =>
+    InputManager.get().map(message =>
+      Ok(views.html.status(message)))
   }
 
   def updateStatus() = userAction().apply { implicit request: Request[AnyContent] =>
     val inputMessage = request.body.asFormUrlEncoded.get.apply("statusInput").head
-    InputManager.inputMessage = inputMessage
+    InputManager.add(Some(inputMessage))
     customEventPublish.main(inputMessage)
     Ok(views.html.index())
   }

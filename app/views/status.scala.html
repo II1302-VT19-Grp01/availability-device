@@ -1,10 +1,8 @@
-@()(implicit req: RequestHeader)
-
-@import models.InputManager
-
-@main("Status", Page.Other) {
-
-    <h1>@InputManager.inputMessage</h1>
+@(msg: Option[String])(implicit req: RequestHeader)
 
 
-}
+
+    @main("Status", Page.Other) {
+        <!-- TO DO-->
+        <h1>@msg</h1>
+    }
