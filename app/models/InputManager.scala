@@ -13,7 +13,8 @@ import scala.concurrent.ExecutionContext.Implicits.global
 @ImplementedBy(classOf[DbInputManager])
 trait InputManager {
   def add(inputMessage: Option[String])
-  def get() : Future[Option[String]]
+
+  def get(): Future[Option[String]]
 }
 
 class DbInputManager @Inject()(
@@ -24,9 +25,8 @@ class DbInputManager @Inject()(
     Inputs.map(_.message) += inputMessage
   }
 
-  //TO DO
-  override def get()   = db.run {
-    Inputs.sortBy(_.id).result.headOption.map(input => input.flatMap(_.message) )
+  override def get() = db.run {
+    Inputs.sortBy(_.id.desc).result.headOption.map(input => input.flatMap(_.message)) // .id is ascending on default.
   }
 }
 

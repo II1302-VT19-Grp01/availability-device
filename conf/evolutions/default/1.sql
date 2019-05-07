@@ -28,7 +28,7 @@ CREATE TABLE fields (
 CREATE TABLE inputs (
   id SERIAL NOT NULL PRIMARY KEY,
   "message" TEXT
-)
+);
 
 
 # --- !Downs
