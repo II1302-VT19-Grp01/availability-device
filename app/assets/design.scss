@@ -13,7 +13,7 @@ header {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #c0ceff;
+    background-color: #212121;
   }
 
   li {
@@ -28,7 +28,7 @@ header {
 
       /* Change the link color to #111 (black) on hover */
       &:hover {
-        background-color: #A2ABD9;
+        background-color: #000000;
         color: #f0ffff;
         text-decoration: none;
       }

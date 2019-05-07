@@ -3,7 +3,7 @@
 
 @main("Send message.", Page.Other) {
   <br>
-  <h1>Here you can send your input to the availability device!</h1>
+  <h1>Type in your current status</h1>
 
     @helper.form(action = routes.HomeController.updateStatus()) {
         <div class="form-group">
@@ -11,7 +11,7 @@
             <input type="input" class="form-control" id="exampleInput" name="statusInput" aria-describedby="inputHelp" placeholder="Enter input">
             <small id="inputHelp" class="form-text text-muted">Please do not use a danish "ö".</small>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-secondary">Submit</button>
         @helper.CSRF.formField <!-- To disable protection. :/ -->
     }
 

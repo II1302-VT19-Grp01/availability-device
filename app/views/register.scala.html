@@ -1,7 +1,7 @@
-
 @(form: Form[LoginController.RegisterForm], target: Option[String])(implicit messages: MessagesProvider, req: RequestHeader)
 
 @main("Register", Page.Register) {
+    <br>
 
     @helper.form(routes.LoginController.doRegister(target), 'class -> "form-signin") {
         @helper.CSRF.formField
@@ -18,7 +18,7 @@
             @helper.inputText(form("firstname"), 'class -> "form-control", 'placeholder -> "First Name", '_label -> "First Name")
             @helper.inputText(form("surname"), 'class -> "form-control", 'placeholder -> "Last Name", '_label -> "Last Name")
             @helper.inputText(form("email"), 'class -> "form-control", 'placeholder -> "Email", '_label -> "Email")
-            <button id="register" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+            <button id="register" class="btn btn-lg btn-secondary btn-block" type="submit">Register</button>
         </fieldset>
 
     }
