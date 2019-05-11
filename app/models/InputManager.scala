@@ -15,6 +15,8 @@ trait InputManager {
   def add(inputMessage: Option[String])
 
   def get(): Future[Option[String]]
+
+  def getAll(): Future[Seq[String]]
 }
 
 class DbInputManager @Inject()(
@@ -28,6 +30,12 @@ class DbInputManager @Inject()(
   override def get() = db.run {
     Inputs.sortBy(_.id.desc).result.headOption.map(input => input.flatMap(_.message)) // .id is ascending on default.
   }
+
+  override def getAll() = db.run { //gets all the messages from the database
+    Inputs.sortBy(_.id.desc).result.map(input => input.flatMap(_.message))
+  }
+
+
 }
 
 
