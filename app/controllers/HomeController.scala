@@ -30,10 +30,9 @@ class HomeController @Inject()(implicit val userManager: UserManager, val InputM
     Ok(views.html.index())
   }
 
-
   def input() = userAction().async { implicit request: Request[AnyContent] =>
     InputManager.getAll().map(message =>
-    Ok(views.html.input()))
+    Ok(views.html.input(message)))
   }
 
   def status() = userAction().async { implicit request: Request[AnyContent] =>

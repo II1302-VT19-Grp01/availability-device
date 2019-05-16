@@ -1,18 +1,25 @@
-@()(implicit request: RequestHeader) <!-- When you are going to make a POST request. -->
+@(msg: Seq[String])(implicit request: RequestHeader) <!-- When you are going to make a POST request. -->
 
 
 @main("Send message.", Page.Other) {
-  <br>
-  <h1>Type in your current status</h1>
+    <br>
+    <h1>Type in your current status</h1>
 
     @helper.form(action = routes.HomeController.updateStatus()) {
         <div class="form-group">
-                <!-- <label for="exampleInput">Input</label> -->
-            <input type="input" class="form-control" id="exampleInput" name="statusInput" aria-describedby="inputHelp" placeholder="Enter input">
+            <input type="input" class="form-control" id="exampleInput" name="statusInput" aria-describedby="inputHelp" placeholder="Enter input" list="sel1">
+
+            <datalist id="sel1">
+            @for(m <- msg) {
+                <option>@m</option>
+            }
+            </datalist>
+
             <small id="inputHelp" class="form-text text-muted">Please do not use a danish "ö".</small>
         </div>
         <button type="submit" class="btn btn-secondary">Submit</button>
-        @helper.CSRF.formField <!-- To disable protection. :/ -->
-    }
+        @helper.CSRF.formField
 
+
+    }
 }
