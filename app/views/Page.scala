@@ -2,7 +2,7 @@ package views
 
 /**
   * Used to track the current page for view-level concerns, such as marking the
-  * active page in the navbar.
+  * * active page in the navbar.
   */
 sealed trait Page
 object Page {
